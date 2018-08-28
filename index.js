@@ -3,7 +3,7 @@ const fs = require('fs');
 
 let config = Object.assign({
 	modulePath: "modules",
-    token: "shhhh"
+    token: "shhhhh"
 }, JSON.parse(fs.readFileSync('config.json')));
 let bot = new BotCore(config);
 
