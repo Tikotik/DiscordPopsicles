@@ -11,4 +11,5 @@ let bot = new BotCore(config);
 
 bot.on('ready', () => {
     console.log(`Logged in as ${bot.client.user.tag}.`);
+    bot.client.user.setStatus("Making Popsicles");
 });
