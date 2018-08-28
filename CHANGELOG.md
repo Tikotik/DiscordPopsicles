@@ -6,4 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Additions
-- Ping Command
+- Commands
+    - Ping
+    - Order
+    - Tip
+    - Feedback
+- Features
+    - Basic Ticket System using Embeds.
