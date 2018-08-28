@@ -4,7 +4,7 @@ exports.onLoad = api => {
     let regex = new RegExp("p!order (.*)");
     
     api.commands.add('order', (msg) => {
-        // Get Order. The order is order[1].
+        // Get order. The order is order[1].
         order = regex.exec(msg.content);
 
         // Sends an embed.
@@ -19,7 +19,7 @@ exports.onLoad = api => {
             timestamp: new Date(),
         }});
 
-        // Sends Ticket
+        // Sends ticket.
         api.client.guilds.get("483736796354576394").channels.get("483743363909025806").send({embed: {
             color: "3447003",
             title: msg.author.username,

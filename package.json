@@ -1,0 +1,25 @@
+{
+  "name": "discordpopsicles",
+  "version": "1.0.0",
+  "description": "A discord bot to deliver popsicles to your discord server.",
+  "main": "index.js",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "is-number": "^7.0.0",
+    "reputation-core": "^1.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hparcells/DiscordPopsicles.git"
+  },
+  "author": "Hunter Parcells",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hparcells/DiscordPopsicles/issues"
+  },
+  "homepage": "https://github.com/hparcells/DiscordPopsicles#readme"
+}
