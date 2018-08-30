@@ -7,6 +7,13 @@ exports.onLoad = api => {
         // Get order. The order is order[1].
         order = regex.exec(msg.content);
 
+        // Gets ticket ID.
+        let ticketGen = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split('');
+        let ticketStr = "";
+        for(let i = 0; i < 7; i++) {
+            ticketStr += ticketGen[Math.floor(Math.random() * ticketGen.length)];
+        }
+
         // Sends an embed.
         msg.channel.send({embed: {
             color: "3447003",
@@ -14,7 +21,7 @@ exports.onLoad = api => {
             description: "Your order has been placed!",
             fields: [{
                 name: "Your Ticket ID",
-                value: "`EXAMPLE`"
+                value: "`" + ticketStr + "`"
               }],
             timestamp: new Date(),
         }});
@@ -33,7 +40,7 @@ exports.onLoad = api => {
             },
             {
                 name: ":hash: Ticket ID",
-                value: "EXAMPLE",
+                value: ticketStr,
             },
             {
                 name: ":computer: Guild Infomation",
