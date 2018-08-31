@@ -8,7 +8,7 @@ exports.onLoad = api => {
         let employeeRole = msg.guild.roles.get("483739310269399051");
 
         if(msg.member.roles.has(employeeRole.id)) {
-            if(msg.channel.id !== 483744245237284875) {
+            if(msg.channel.id == 483744245237284875) {
                 // The ticket ID.
                 let ticketID = msg.content.substring(8);
 
@@ -71,7 +71,7 @@ exports.onLoad = api => {
                             spaces: 4
                         }).then(() => {
                             // Send's a message to the cook.
-                            msg.channel.send(":thumbsup: You've now claimed `" + ticketID + "`!");
+                            msg.channel.send(`:thumbsup: You've now claimed \`ticketID\`.`);
 
                             // Sends a message to the customer.
                             api.client.users.get(order.userID).send(`Guess what? Your ticket has now been claimed by **${msg.author.username}**! It should be started shortly.`)
