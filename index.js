@@ -12,13 +12,15 @@ let bot = new BotCore(config);
 
 bot.on('ready', () => {
     console.log(colors.green(`Logged in as ${bot.client.user.tag}.`));
+    console.log(colors.green(`In ${bot.client.guilds.size} Guilds.`))
 
     // Activityx    
     const activities_list = [
         "Making Popsicles", 
         "Eating Popsicles",
         "p!help", 
-        "p!order Popsicles"
+        "p!order Popsicles",
+        `in ${bot.client.guilds.size} Guilds`
     ];
     
     setInterval(() => {
