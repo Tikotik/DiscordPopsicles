@@ -18,10 +18,7 @@ exports.onLoad = api => {
                     if(reason === "") {
                         reason = "None Provided";
                     }
-
-                    // Sends a message to the customer.
-                    api.client.users.get(order.userID).send(`:cry: Sorry, but your order was cancelled by **${msg.author.username}** due to the following reason: \`${reason}\`.`)
-
+                    
                     // Deletes the ticket.
                     delete orderDB[ticketID];
                     
@@ -31,7 +28,13 @@ exports.onLoad = api => {
                         spaces: 4
                     }).then(() => {
                         // Send's a message to the cook.
-                        msg.channel.send(`:thumbsup: You've deleted the ticket \`${ticketID}\`!`);                        
+                        msg.channel.send(`:thumbsup: You've deleted the ticket \`${ticketID}\`!`); 
+                        
+                        // Sends a message to the customer.
+                        api.client.users.get(order.userID).send(`:cry: Sorry, but your order was cancelled by **${msg.author.username}** due to the following reason: \`${reason}\`.`);
+    
+                        // Logs in console.
+                        console.log(colors.red(`${msg.author.username} deleted ticket ${order.orderID}.`));
                     }).catch((err) => {
                         if (err) {
                             msg.reply(`There was an error while writing to the database! Show the following message to a developer: \`\`\`${err}\`\`\``)
