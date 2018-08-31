@@ -1,6 +1,7 @@
 exports.id = 'order';
 
-const fsn = require('fs-nextra');
+const fsn = require("fs-nextra");
+const colors = require("colors")
 
 exports.onLoad = api => {
     let regex = new RegExp("p!order (.*)");
@@ -45,7 +46,7 @@ exports.onLoad = api => {
                     description: "Your order has been placed!",
                     fields: [{
                         name: "Your Ticket ID",
-                        value: "`" + ticketID + "`"
+                        value: `\`${ticketID}\``
                         }],
                     timestamp: new Date(),
                 }});
@@ -56,7 +57,7 @@ exports.onLoad = api => {
                     title: msg.author.username,
                     fields: [{
                         name: ":ticket: New Ticket",
-                        value: msg.author.username + " would like a popsicle.",
+                        value: `${msg.author.username} would like a popsicle.`,
                     }, {
                         name: ":newspaper2: Popsicle Description",
                         value: order,
@@ -65,7 +66,7 @@ exports.onLoad = api => {
                         value: ticketID,
                     }, {
                         name: ":computer: Guild Infomation",
-                        value: "This ticket came from " + msg.guild + " (" + msg.guild.id+ ")" + " in " + msg.channel + " (" + msg.channel.id + ").",
+                        value: `This ticket came from ${msg.guild} (${msg.guild.id}) in ${msg.channel} (${msg.channel.id}).`,
                     }, {
                         name: ":white_check_mark: Ticket Status",
                         value: "Unclaimed", 
@@ -78,7 +79,7 @@ exports.onLoad = api => {
             }).catch((err) => {
                 if(err) {
                     message.reply(`There was a database error! Show the following message to a developer: \`\`\`${err}\`\`\``)
-                    console.error(`Error in order ${orderID} ${err}`);
+                    console.log(colors.red(`Error in order ${orderID}: ${err}`));
                 }
             })
         });
