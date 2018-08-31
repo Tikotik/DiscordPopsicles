@@ -14,7 +14,7 @@ exports.onLoad = api => {
 
                 fsn.readJSON("./orders.json").then((orderDB) => {
                     const order = orderDB[ticketID];
-
+                    
                     // If the order doesn't exist.
                     if(order === undefined) {
                         msg.reply("Couldn't Find that Order. Try Again!");
