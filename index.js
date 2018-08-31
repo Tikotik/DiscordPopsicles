@@ -12,5 +12,17 @@ let bot = new BotCore(config);
 
 bot.on('ready', () => {
     console.log(colors.green(`Logged in as ${bot.client.user.tag}.`));
-    bot.client.user.setActivity("Making Popsicles");
+
+    // Activityx    
+    const activities_list = [
+        "Making Popsicles", 
+        "Eating Popsicles",
+        "p!help", 
+        "p!order Popsicles"
+    ];
+    
+    setInterval(() => {
+        const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
+        bot.client.user.setActivity(activities_list[index]);
+    }, 10000);
 });
