@@ -31,38 +31,34 @@ exports.onLoad = api => {
                     "chef": msg.author.id
                 };
 
-                // Gets matching messages in tickets channel.
-                api.client.channels.get("483743363909025806").fetchMessages({
-                    limit: 100 
-                }).then(msgs => {
-                    let msg = msgs.filter(m => m.content.includes(ticketID));
-
-                    // Edits the message in the tickets channel.
-                    msg.first().edit({embed: {
-                        color: "3447003",
-                        title: msg.author.username,
-                        fields: [{
-                            name: ":ticket: New Ticket",
-                            value: `${msg.author.username} would like a popsicle.`,
-                        }, {
-                            name: ":newspaper2: Popsicle Description",
-                            value: order,
-                        }, {
-                            name: ":hash: Ticket ID",
-                            value: ticketID,
-                        }, {
-                            name: ":computer: Guild Infomation",
-                            value: `This ticket came from ${msg.guild} (${msg.guild.id}) in ${msg.channel} (${msg.channel.id}).`,
-                        }, {
-                            name: ":white_check_mark: Ticket Status",
-                            value: "Claimed", 
-                        }],
-                        timestamp: new Date(),
-                        footer: {
-                            text: "Discord Popsicles"
-                        }
-                    }});
-                });
+                /*
+                    TODO: EDIT THE TICKET IN THE TICKETS CHANNEL.
+                */
+                // Edits the message in the tickets channel.
+                // msg.channel.send({embed: {
+                //     color: "3447003",
+                //     title: api.client.users.get(order.userID).username,
+                //     fields: [{
+                //         name: ":ticket: New Ticket",
+                //         value: `${api.client.users.get(order.userID).username} would like a popsicle.`,
+                //     }, {
+                //         name: ":newspaper2: Popsicle Description",
+                //         value: order.order,
+                //     }, {
+                //         name: ":hash: Ticket ID",
+                //         value: ticketID,
+                //     }, {
+                //         name: ":computer: Guild Infomation",
+                //         value: `This ticket came from ${api.client.guilds.get(order.guildID).name} (${order.guildID}) in #${api.client.channels.get(order.channelID).name} (${api.client.channels.get(order.channelID).id}).`,
+                //     }, {
+                //         name: ":white_check_mark: Ticket Status",
+                //         value: "Claimed", 
+                //     }],
+                //     timestamp: new Date(),
+                //     footer: {
+                //         text: "Discord Popsicles"
+                //     }
+                // }});
 
                 // Writes Data to JSON.
                 fsn.writeJSON("./orders.json", orderDB, {
@@ -76,7 +72,7 @@ exports.onLoad = api => {
                     api.client.users.get(order.userID).send(`Guess what? Your ticket has now been claimed by **${msg.author.username}**! It should be started shortly.`)
                 }).catch((err) => {
                     if (err) {
-                        message.reply(`There was an error while writing to the database! Show the following message to a developer: \`\`\`${err}\`\`\``)
+                        msg.reply(`There was an error while writing to the database! Show the following message to a developer: \`\`\`${err}\`\`\``)
                     }
                 });
             }else if(order.status === "Claimed") {
