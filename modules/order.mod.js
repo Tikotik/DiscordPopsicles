@@ -6,8 +6,7 @@ exports.onLoad = api => {
     let regex = new RegExp("p!order (.*)");
 
     api.commands.add('order', (msg) => {
-        // Get order. The order is order[1].
-        order = regex.exec(msg.content);
+        let order = msg.content.substring(7);
 
         // Gets ticket ID.
         function generateID() {
@@ -24,20 +23,22 @@ exports.onLoad = api => {
 
         // Sets ticket info.
         fsn.readJSON("./orders.json").then(orderDB => {
+            // Set JSON information.
             if (!orderDB[ticketID]) orderDB[ticketID] = {
                 'orderID': ticketID,
                 'userID': msg.author.id,
                 'guildID': msg.guild.id,
                 'channelID': msg.channel.id,
-                'order': order[1],
+                'order': order,
                 'status': 'Unclaimed'
             }
 
+            // Write JSON information.
             fsn.writeJSON("./orders.json", orderDB, {
                 replacer: null,
                 spaces: 4
             }).then(() => {
-                // Sends an embed.
+                // Sends an embed to the customer.
                 msg.channel.send({embed: {
                     color: "3447003",
                     title: "Ticket Created",
@@ -49,7 +50,7 @@ exports.onLoad = api => {
                     timestamp: new Date(),
                 }});
     
-                // Sends ticket.
+                // Sends ticket information to tickets channel.
                 api.client.guilds.get("483736796354576394").channels.get("483743363909025806").send({embed: {
                     color: "3447003",
                     title: msg.author.username,
@@ -58,7 +59,7 @@ exports.onLoad = api => {
                         value: msg.author.username + " would like a popsicle.",
                     }, {
                         name: ":newspaper2: Popsicle Description",
-                        value: order[1],
+                        value: order,
                     }, {
                         name: ":hash: Ticket ID",
                         value: ticketID,
