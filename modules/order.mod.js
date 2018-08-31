@@ -1,13 +1,12 @@
 exports.id = 'order';
 
 const fsn = require("fs-nextra");
-const colors = require("colors")
+const colors = require("colors");
 
 exports.onLoad = api => {
-    let regex = new RegExp("p!order (.*)");
-
     api.commands.add('order', (msg) => {
-        let order = msg.content.substring(7);
+        // The order.
+        let order = msg.content.substring(8);
 
         // Gets ticket ID.
         function generateID() {
@@ -50,7 +49,7 @@ exports.onLoad = api => {
                         }],
                     timestamp: new Date(),
                 }});
-    
+                
                 // Sends ticket information to tickets channel.
                 api.client.guilds.get("483736796354576394").channels.get("483743363909025806").send({embed: {
                     color: "3447003",
@@ -76,12 +75,15 @@ exports.onLoad = api => {
                         text: "Discord Popsicles"
                     }
                 }});
+
+                // Logs in console.
+                console.log(colors.green(`${msg.author.username} ordered "${order}" in ${msg.guild.name} (${msg.guild.id}) in ${msg.channel.name} (${msg.channel.id}).`));
             }).catch((err) => {
                 if(err) {
-                    message.reply(`There was a database error! Show the following message to a developer: \`\`\`${err}\`\`\``)
-                    console.log(colors.red(`Error in order ${orderID}: ${err}`));
+                    msg.reply(`There was a database error! Show the following message to a developer: \`\`\`${err}\`\`\``)
+                    console.log(colors.red(`Error in order ${ticketID}: ${err}`));
                 }
-            })
+            });
         });
     });
 };
