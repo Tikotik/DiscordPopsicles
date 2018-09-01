@@ -9,13 +9,12 @@ exports.onLoad = api => {
 
         if(msg.member.roles.has(employeeRole.id)) {
             if(msg.channel.id == 483744245237284875) {
-                if (order.status === "Unclaimed") {
-                    // The ticket ID.
-                    let ticketID = msg.content.substring(8);
-
-                    fsn.readJSON("./orders.json").then((orderDB) => {
-                        const order = orderDB[ticketID];
-                        
+                // The ticket ID.
+                let ticketID = msg.content.substring(8);
+                
+                fsn.readJSON("./orders.json").then((orderDB) => {
+                    const order = orderDB[ticketID];
+                    if (order.status === "Unclaimed") {
                         // If the order doesn't exist.
                         if(order === undefined) {
                             msg.reply("Couldn't Find that Order. Try Again!");
@@ -88,20 +87,20 @@ exports.onLoad = api => {
                                 console.log(colors.green(`${msg.author.username} claimed ticket ${ticketID}.`));
                             });
                         });
-                    });  
-                }else if(order.status === "Unclaimed") {
-                    msg.reply("This order hasn't been claimed yet. Run `p!claim [Ticket ID]` to claim it.");
-                }else if(order.status === "Claimed") {
-                    if(order.chef !== msg.author.id) {
-                        msg.reply(`This ticket is already claimed by ${api.client.users.get(order.chef).tag}`);
-                    }else {
-                        msg.reply(`You have already claimed this ticket. Run \`p!freeze [Ticket ID]\` to start making this ticket.`);
-                    }
-                }else if(order.status === "Freezing") {
-                    msg.reply("This order is already claimed and freezing right now. Wait a little bit, then run `p!deliver [Ticket ID]` in <#483744285145956382> to deliver.");
-                }else if(order.status === "Froze") {
-                    msg.reply("This order is already frozen and ready to be delivered. Run `p!deliver [Ticket ID]` in <#483744285145956382> to deliver.");
-                }
+                    }else if(order.status === "Unclaimed") {
+                        msg.reply("This order hasn't been claimed yet. Run `p!claim [Ticket ID]` to claim it.");
+                    }else if(order.status === "Claimed") {
+                        if(order.chef !== msg.author.id) {
+                            msg.reply(`This ticket is already claimed by ${api.client.users.get(order.chef).tag}`);
+                        }else {
+                            msg.reply(`You have already claimed this ticket. Run \`p!freeze [Ticket ID]\` to start making this ticket.`);
+                        }
+                    }else if(order.status === "Freezing") {
+                        msg.reply("This order is already claimed and freezing right now. Wait a little bit, then run `p!deliver [Ticket ID]` in <#483744285145956382> to deliver.");
+                    }else if(order.status === "Froze") {
+                        msg.reply("This order is already frozen and ready to be delivered. Run `p!deliver [Ticket ID]` in <#483744285145956382> to deliver.");
+                    } 
+                });
             }else {
                 msg.reply("Please use this command in the <#483744245237284875> channel.");
                 console.log(colors.red(`${msg.author.username} used the claim command in the wrong channel.`));
