@@ -42,9 +42,14 @@ exports.onLoad = api => {
                     });
 
                     // Deletes ticket from tickets channel.
-                    /*
-                        TODO: DELETE THE TICKET IN THE TICKETS CHANNEL.
-                    */
+                    api.client.channels.get("483743363909025806").fetchMessages({
+                        around: order.ticketChannelMessageID,
+                        limit: 1
+                    }).then(messages => {
+                        const fetchedMsg = messages.first();
+
+                        fetchedMsg.delete();
+                    });
                 });
             }else {
                 msg.reply("Please use this command in the <#483744245237284875> channel.");

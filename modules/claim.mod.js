@@ -22,9 +22,6 @@ exports.onLoad = api => {
                         return;
                     }
                     
-                    /*
-                        TODO: EDIT THE TICKET IN THE TICKETS CHANNEL.
-                    */
                     // Edits the message in the tickets channel.
                     api.client.channels.get("483743363909025806").fetchMessages({
                         around: order.ticketChannelMessageID,
