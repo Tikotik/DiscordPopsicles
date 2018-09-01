@@ -4,7 +4,7 @@ const colors = require("colors");
 
 let config = Object.assign({
 	modulePath: "modules",
-    token: "token"
+    token: process.env.token
 }, JSON.parse(fs.readFileSync('config.json')));
 let bot = new BotCore(config);
 
