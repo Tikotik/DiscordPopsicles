@@ -2,7 +2,7 @@ exports.id = 'freeze';
 
 const Discord = require("discord.js");
 const fsn = require("fs-nextra");
-const colors = require("colors")
+const colors = require("colors");
 
 exports.onLoad = api => {
     api.commands.add('freeze', (msg) => {
@@ -93,7 +93,7 @@ exports.onLoad = api => {
                                             api.client.users.get(order.userID).send(`:thumbsup: Your cook just put your ticket in the freezer! It should take **3 minutes** to cook!`);
         
                                             // Starts freezing for 3 minutes.
-                                            setTimeout(froze, 10000);
+                                            setTimeout(froze, 180000);
                                             
                                             // When done after 3 minutes.
                                             function froze() {
