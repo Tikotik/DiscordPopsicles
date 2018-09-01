@@ -96,7 +96,7 @@ exports.onLoad = api => {
                         }
                     }else if(order.status === "Freezing") {
                         msg.reply("This order is already claimed and freezing right now. Wait a little bit, then run `p!deliver [Ticket ID]` in <#483744285145956382> to deliver.");
-                    }else if(order.status === "Froze") {
+                    }else if(order.status === "Frozen") {
                         msg.reply("This order is already frozen and ready to be delivered. Run `p!deliver [Ticket ID]` in <#483744285145956382> to deliver.");
                     } 
                 });
