@@ -21,68 +21,71 @@ exports.onLoad = api => {
         }
         const ticketID = generateID();
 
-        // Sets ticket info.
-        fsn.readJSON("./orders.json").then(orderDB => {
-            // Set JSON information.
-            if (!orderDB[ticketID]) orderDB[ticketID] = {
-                'orderID': ticketID,
-                'userID': msg.author.id,
-                'guildID': msg.guild.id,
-                'channelID': msg.channel.id,
-                'order': order,
-                'status': 'Unclaimed'
+        // Sends ticket information to tickets channel.
+        api.client.guilds.get("483736796354576394").channels.get("483743363909025806").send({embed: {
+            color: "3447003",
+            title: msg.author.username,
+            fields: [{
+                name: ":ticket: New Ticket",
+                value: `${msg.author.username} would like a popsicle.`,
+            }, {
+                name: ":newspaper2: Popsicle Description",
+                value: order,
+            }, {
+                name: ":hash: Ticket ID",
+                value: ticketID,
+            }, {
+                name: ":computer: Guild Infomation",
+                value: `This ticket came from ${msg.guild} (${msg.guild.id}) in ${msg.channel} (${msg.channel.id}).`,
+            }, {
+                name: ":white_check_mark: Ticket Status",
+                value: "Unclaimed", 
+            }],
+            timestamp: new Date(),
+            footer: {
+                text: "Discord Popsicles"
             }
+        }}).then((m) => {
+            m = m.id;
 
-            // Write JSON information.
-            fsn.writeJSON("./orders.json", orderDB, {
-                replacer: null,
-                spaces: 4
-            }).then(() => {
-                // Sends an embed to the customer.
-                msg.channel.send({embed: {
-                    color: "3447003",
-                    title: "Ticket Created",
-                    description: "Your order has been placed!",
-                    fields: [{
-                        name: "Your Ticket ID",
-                        value: `\`${ticketID}\``
-                        }],
-                    timestamp: new Date(),
-                }});
-                
-                // Sends ticket information to tickets channel.
-                api.client.guilds.get("483736796354576394").channels.get("483743363909025806").send({embed: {
-                    color: "3447003",
-                    title: msg.author.username,
-                    fields: [{
-                        name: ":ticket: New Ticket",
-                        value: `${msg.author.username} would like a popsicle.`,
-                    }, {
-                        name: ":newspaper2: Popsicle Description",
-                        value: order,
-                    }, {
-                        name: ":hash: Ticket ID",
-                        value: ticketID,
-                    }, {
-                        name: ":computer: Guild Infomation",
-                        value: `This ticket came from ${msg.guild} (${msg.guild.id}) in ${msg.channel} (${msg.channel.id}).`,
-                    }, {
-                        name: ":white_check_mark: Ticket Status",
-                        value: "Unclaimed", 
-                    }],
-                    timestamp: new Date(),
-                    footer: {
-                        text: "Discord Popsicles"
-                    }
-                }});
-
-                // Logs in console.
-                console.log(colors.green(`${msg.author.username} ordered "${order}" in ${msg.guild.name} (${msg.guild.id}) in ${msg.channel.name} (${msg.channel.id}).`));
-            }).catch((err) => {
-                if(err) {
-                    msg.reply(`There was a database error! Show the following message to a developer: \`\`\`${err}\`\`\``)
-                    console.log(colors.red(`Error in order ${ticketID}: ${err}`));
+            // Sets ticket info.
+            fsn.readJSON("./orders.json").then(orderDB => {
+                // Set JSON information.
+                if (!orderDB[ticketID]) orderDB[ticketID] = {
+                    "orderID": ticketID,
+                    "userID": msg.author.id,
+                    "guildID": msg.guild.id,
+                    "channelID": msg.channel.id,
+                    "order": order,
+                    "status": "Unclaimed",
+                    "ticketChannelMessageID": m
                 }
+    
+                // Write JSON information.
+                fsn.writeJSON("./orders.json", orderDB, {
+                    replacer: null,
+                    spaces: 4
+                }).then(() => {
+                    // Sends an embed to the customer.
+                    msg.channel.send({embed: {
+                        color: "3447003",
+                        title: "Ticket Created",
+                        description: "Your order has been placed!",
+                        fields: [{
+                            name: "Your Ticket ID",
+                            value: `\`${ticketID}\``
+                            }],
+                        timestamp: new Date(),
+                    }});
+    
+                    // Logs in console.
+                    console.log(colors.green(`${msg.author.username} ordered "${order}" in ${msg.guild.name} (${msg.guild.id}) in ${msg.channel.name} (${msg.channel.id}).`));
+                }).catch((err) => {
+                    if(err) {
+                        msg.reply(`There was a database error! Show the following message to a developer: \`\`\`${err}\`\`\``)
+                        console.log(colors.red(`Error in order ${ticketID}: ${err}`));
+                    }
+                });
             });
         });
     });
