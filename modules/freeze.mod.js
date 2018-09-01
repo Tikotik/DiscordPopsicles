@@ -154,7 +154,7 @@ exports.onLoad = api => {
                                                 api.client.channels.get("483744285145956382").send(`Ticket \`${ticketID}\` has completed freezing and is ready to be delivered!`);
 
                                                 // Sends a message to the customer.
-                                                api.client.users.get(order.userID).send("Your popsicle is frozen and will be delivered shortly!");
+                                                api.client.users.get(order.userID).send(":thumbsup: Your popsicle is frozen and will be delivered shortly!");
                                             }).catch((err) => {
                                                 if (err) {
                                                     msg.reply(`There was an error while writing to the database! Show the following message to a developer: \`\`\`${err}\`\`\``);   

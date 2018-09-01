@@ -79,7 +79,7 @@ exports.onLoad = api => {
                                     msg.channel.send(`:thumbsup: You've now claimed \`${ticketID}\`.`);
 
                                     // Sends a message to the customer.
-                                    api.client.users.get(order.userID).send(`Guess what? Your ticket has now been claimed by **${msg.author.username}**! It should be started shortly.`);
+                                    api.client.users.get(order.userID).send(`:thumbsup: Guess what? Your ticket has now been claimed by **${msg.author.username}**! It should be started shortly.`);
                                 }).catch((err) => {
                                     if (err) {
                                         msg.reply(`There was an error while writing to the database! Show the following message to a developer: \`\`\`${err}\`\`\``);   
