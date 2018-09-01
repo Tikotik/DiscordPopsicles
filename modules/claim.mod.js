@@ -14,14 +14,15 @@ exports.onLoad = api => {
                 
                 fsn.readJSON("./orders.json").then((orderDB) => {
                     const order = orderDB[ticketID];
-                    if (order.status === "Unclaimed") {
-                        // If the order doesn't exist.
-                        if(order === undefined) {
-                            msg.reply("Couldn't Find that Order. Try Again!");
 
-                            return;
-                        }
-                        
+                    // If the order doesn't exist.
+                    if(order === undefined) {
+                        msg.reply("Couldn't find that order. Try again!");
+
+                        return;
+                    }
+                    
+                    if (order.status === "Unclaimed") {                        
                         // Edits the message in the tickets channel.
                         api.client.channels.get("483743363909025806").fetchMessages({
                             around: order.ticketChannelMessageID,
