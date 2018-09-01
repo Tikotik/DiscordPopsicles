@@ -88,8 +88,6 @@ exports.onLoad = api => {
                                 console.log(colors.green(`${msg.author.username} claimed ticket ${ticketID}.`));
                             });
                         });
-                    }else if(order.status === "Unclaimed") {
-                        msg.reply("This order hasn't been claimed yet. Run `p!claim [Ticket ID]` to claim it.");
                     }else if(order.status === "Claimed") {
                         if(order.chef !== msg.author.id) {
                             msg.reply(`This ticket is already claimed by ${api.client.users.get(order.chef).tag}`);
