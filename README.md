@@ -1,4 +1,7 @@
 # DiscordPopsicles
+![status](https://img.shields.io/badge/status-active-brightgreen.svg)
+![maintained](https://img.shields.io/badge/maintained-yes-brightgreen.svg)
+
 A discord bot to deliver popsicles to your server.
 
 ## Inviting
