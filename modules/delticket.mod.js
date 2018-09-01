@@ -59,5 +59,5 @@ exports.onLoad = api => {
             msg.reply("You do not have access to this command.");
             console.log(colors.red(`${msg.author.username} did not have access to the delticket command.`));
         }
-    })
+    });
 };

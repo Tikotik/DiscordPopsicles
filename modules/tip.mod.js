@@ -16,12 +16,12 @@ exports.onLoad = api => {
             // Sends tip.
             api.client.guilds.get("483736796354576394").channels.get("483743397082038302").send({embed: {
                 color: "3447003",
-                title: msg.author.username + " left a tip!",
+                title: `${msg.author.username} left a tip!`,
                 description: "$" + tip[1],
                 timestamp: new Date(),
             }});
         }else {
-            msg.channel.send(tip[1] + " is not a valid number.")
+            msg.channel.send(`${tip[1]} is not a valid number.`);
         }
     });
 };
