@@ -1,10 +1,10 @@
-exports.id = 'claim';
+exports.id = "claim";
 
 const fsn = require("fs-nextra");
 const colors = require("colors");
 
 exports.onLoad = api => {
-    api.commands.add('claim', (msg) => {
+    api.commands.add("claim", (msg) => {
         let employeeRole = msg.guild.roles.get("483739310269399051");
 
         if(msg.member.roles.has(employeeRole.id)) {
@@ -75,7 +75,7 @@ exports.onLoad = api => {
                                     replacer: null,
                                     spaces: 4
                                 }).then(() => {
-                                    // Send's a message to the cook.
+                                    // Sends a message to the cook.
                                     msg.channel.send(`:thumbsup: You've now claimed \`${ticketID}\`.`);
 
                                     // Sends a message to the customer.

@@ -1,16 +1,16 @@
-exports.id = 'order';
+exports.id = "order";
 
 const fsn = require("fs-nextra");
 const colors = require("colors");
 
 exports.onLoad = api => {
-    api.commands.add('order', (msg) => {
+    api.commands.add("order", (msg) => {
         // The order.
         let order = msg.content.substring(8);
 
         // Gets ticket ID.
         function generateID() {
-            let ticketGen = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split('');
+            let ticketGen = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split("");
             let ticketStr = "";
 
             for(let i = 0; i < 7; i++) {
