@@ -5,7 +5,7 @@ exports.onLoad = api => {
     
     api.commands.add('feedback', (msg) => {
         // Get feedback. The feedback is feedback[1].
-        feedback = regex.exec(msg.content);
+        let feedback = regex.exec(msg.content);
 
         // Sends an message.
         msg.channel.send("Thanks for the feedback! We really appreciate it.");

@@ -1,10 +1,13 @@
 const BotCore = require('reputation-core');
 const fs = require('fs');
 const colors = require("colors");
+const http = require('http');
+const express = require('express');
+const app = express();
 
 let config = Object.assign({
 	modulePath: "modules",
-    token: process.env.token
+    token: process.env.TOKEN
 }, JSON.parse(fs.readFileSync('config.json')));
 let bot = new BotCore(config);
 
@@ -27,4 +30,14 @@ bot.on('ready', () => {
         const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
         bot.client.user.setActivity(activities_list[index]);
     }, 10000);
+
+    // Keep Awake
+    app.get("/", (request, response) => {
+        console.log(Date.now() + " Ping Received");
+        response.sendStatus(200);
+    });
+    app.listen(process.env.PORT);
+    setInterval(() => {
+        http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
+    }, 280000);
 });

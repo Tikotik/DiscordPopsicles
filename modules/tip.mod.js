@@ -7,7 +7,7 @@ exports.onLoad = api => {
     
     api.commands.add('tip', (msg) => {
         // Get tip. The tip is tip[1].
-        tip = regex.exec(msg.content);
+        let tip = regex.exec(msg.content);
 
         if(isNumber(tip[1])) {
             // Sends an message.
