@@ -8,7 +8,8 @@
     "fs": "^0.0.1-security",
     "fs-nextra": "^0.3.7",
     "is-number": "^7.0.0",
-    "reputation-core": "^1.0.6"
+    "reputation-core": "^1.0.6",
+    "express": "^4.16.3"
   },
   "devDependencies": {},
   "scripts": {

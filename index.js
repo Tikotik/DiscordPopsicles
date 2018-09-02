@@ -1,8 +1,8 @@
-const BotCore = require('reputation-core');
-const fs = require('fs');
+const BotCore = require("reputation-core");
+const fs = require("fs");
 const colors = require("colors");
-const http = require('http');
-const express = require('express');
+const http = require("http");
+const express = require("express");
 const app = express();
 
 let config = Object.assign({

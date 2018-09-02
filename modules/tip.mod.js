@@ -1,4 +1,4 @@
-const isNumber = require('is-number');
+const isNumber = require("is-number");
 
 exports.id = 'tip';
 
