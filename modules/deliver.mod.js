@@ -12,42 +12,64 @@ exports.onLoad = api => {
                 fsn.readJSON("./orders.json").then((orderDB) => {
                     let ticketID = msg.content.substring(10);
                     let order = orderDB[ticketID];
-        
-                    // Send message to cook.
-                    msg.reply("I've DM'd you information about this order! :thumbsup:");
-        
-                    // Direct message cook.
-                    msg.author.send({embed: {
-                        fields: [{
-                            name: "Delivery Info",
-                            value: "The ticket has been deleted, it's all on you now."
-                        }, {
-                            name: "Ticket Description",
-                            value: order.order
-                        }, {
-                            name: "User Information",
-                            value: `${api.client.users.get(order.userID).username} (${api.client.users.get(order.userID).id}) in ${api.client.channels.get(order.channelID).name} (${api.client.channels.get(order.channelID).id}).`
-                        }, {
-                            name: "Cook's Image",
-                            value: order.imageURL
-                        }],
-                        timestamp: new Date()
-                    }});
-                    
-                    // TODO: Invite
-                    api.client.channels.get(order.channelID).createInvite().then(invite => msg.author.send(invite.url));
-        
+
                     // Delete ticket from database.
                     delete orderDB[ticketID];
-        
-                    // Delete ticket from tickets channel.
-                    api.client.channels.get("483743363909025806").fetchMessages({
-                        around: order.ticketChannelMessageID,
-                        limit: 1
-                    }).then(messages => {
-                        const fetchedMsg = messages.first();
-        
-                        fetchedMsg.delete();
+
+                    // Writes data to JSON.
+                    fsn.writeJSON("./orders.json", orderDB, {
+                        replacer: null,
+                        spaces: 4
+                    }).then(() => {
+                        // If bot has create instant invite permission.
+                        if(api.client.guilds.get(order.guildID).me.hasPermission("CREATE_INSTANT_INVITE")) {
+                            // Send message to cook.
+                            msg.reply("I've DM'd you information about this order! :thumbsup:");
+                
+                            // Direct message cook.
+                            msg.author.send({embed: {
+                                fields: [{
+                                    name: "Delivery Info",
+                                    value: "The ticket has been deleted, it's all on you now."
+                                }, {
+                                    name: "Ticket Description",
+                                    value: order.order
+                                }, {
+                                    name: "User Information",
+                                    value: `${api.client.users.get(order.userID).username} (${api.client.users.get(order.userID).id}) in ${api.client.channels.get(order.channelID).name} (${api.client.channels.get(order.channelID).id}).`
+                                }, {
+                                    name: "Cook's Image",
+                                    value: order.imageURL
+                                }],
+                                timestamp: new Date()
+                            }});
+                            
+                            // Get invite.
+                            api.client.channels.get(order.channelID).createInvite().then(invite => msg.author.send(invite.url));
+                        }else {
+                            // Bot delivers it's self.
+                            api.client.channels.get(order.channelID).send(`It seems that this bot doesn't have the correct permissions to generate an invite for your server. Please enable this for next time. Here is your popsicle that you ordered. Remember you can do \`d!tip [Amount]\` to give us virtual tips, and \`d!feedback [Feedback]\` to give us feedback on how we did. ${order.imageURL}`);
+
+                            // Sends message to cooks.
+                            msg.reply(`The bot did not have the Create Instant Invite Permissions for ${api.client.guilds.get(order.guildID).name}, so it delivered the popsicle itself.`);
+                            
+                            // Logs in console.
+                            console.log(colors.green(`The bot did not have the Create Instant Invite Permissions for ${api.client.guilds.get(order.guildID).name}, so it delivered the popsicle itself.`));
+                        }
+
+                        // Delete ticket from tickets channel.
+                        api.client.channels.get("483743363909025806").fetchMessages({
+                            around: order.ticketChannelMessageID,
+                            limit: 1
+                        }).then(messages => {
+                            const fetchedMsg = messages.first();
+            
+                            fetchedMsg.delete();
+                        });
+                    }).catch((err) => {
+                        if (err) {
+                            msg.reply(`There was an error while writing to the database! Show the following message to a developer: \`\`\`${err}\`\`\``)
+                        }
                     });
                 });
             }else {

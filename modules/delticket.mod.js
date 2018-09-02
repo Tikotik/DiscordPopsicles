@@ -22,7 +22,7 @@ exports.onLoad = api => {
                     // Deletes the ticket.
                     delete orderDB[ticketID];
                     
-                    // Writes Data to JSON.
+                    // Writes data to JSON.
                     fsn.writeJSON("./orders.json", orderDB, {
                         replacer: null,
                         spaces: 4
