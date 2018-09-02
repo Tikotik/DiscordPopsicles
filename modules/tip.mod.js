@@ -1,11 +1,11 @@
 const isNumber = require("is-number");
 
-exports.id = 'tip';
+exports.id = "tip";
 
 exports.onLoad = api => {
     let regex = new RegExp("p!tip (.*)");
     
-    api.commands.add('tip', (msg) => {
+    api.commands.add("tip", (msg) => {
         // Get tip. The tip is tip[1].
         let tip = regex.exec(msg.content);
 

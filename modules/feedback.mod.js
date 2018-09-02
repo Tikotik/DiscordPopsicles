@@ -1,9 +1,9 @@
-exports.id = 'feedback';
+exports.id = "feedback";
 
 exports.onLoad = api => {
     let regex = new RegExp("p!feedback (.*)");
     
-    api.commands.add('feedback', (msg) => {
+    api.commands.add("feedback", (msg) => {
         // Get feedback. The feedback is feedback[1].
         let feedback = regex.exec(msg.content);
 

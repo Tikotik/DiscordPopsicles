@@ -1,10 +1,10 @@
-exports.id = 'deliver';
+exports.id = "deliver";
 
 const fsn = require("fs-nextra");
 const colors = require("colors");
 
 exports.onLoad = api => {
-    api.commands.add('deliver', (msg) => {
+    api.commands.add("deliver", (msg) => {
         let employeeRole = msg.guild.roles.get("483739310269399051");
 
         if(msg.member.roles.has(employeeRole.id)) {

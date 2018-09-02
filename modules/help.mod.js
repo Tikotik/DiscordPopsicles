@@ -1,7 +1,7 @@
-exports.id = 'help';
+exports.id = "help";
 
 exports.onLoad = api => {
-    api.commands.add('help', (msg) => {
+    api.commands.add("help", (msg) => {
         // Sends a message.
         msg.channel.send("Sent the DMs!");
 
