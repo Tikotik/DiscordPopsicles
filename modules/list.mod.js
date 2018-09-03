@@ -9,7 +9,7 @@ exports.onLoad = api => {
 
         // List Orders
         fsn.readJSON("./orders.json").then((orderDB) => {
-            for(x in orderDB) {
+            for(let x in orderDB) {
                 msg.channel.send(`\`${x}\`: ${orderDB[x].status}`);
             }
         });
