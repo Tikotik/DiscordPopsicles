@@ -33,12 +33,12 @@ bot.on("ready", () => {
 
     //Joined Guild
     bot.client.on("guildCreate", (guild) => {   
-        console.log(colors.green(`Joined New Guild, ${guild.name}`);
+        console.log(colors.green(`Joined New Guild, ${guild.name}`));
     });
 
     //Left Guild
     bot.client.on("guildDelete", (guild) => {
-        console.log(colors.green(`Left Guild, ${guild.name}`);
+        console.log(colors.green(`Left Guild, ${guild.name}`));
     });
 
     // Keep Awake
