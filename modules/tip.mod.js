@@ -15,7 +15,7 @@ exports.onLoad = api => {
 
             // Sends tip.
             api.client.guilds.get("483736796354576394").channels.get("483743397082038302").send({embed: {
-                color: "3447003",
+                color: 0xFFFFFF,
                 title: `${msg.author.username} left a tip!`,
                 description: "$" + tip[1],
                 timestamp: new Date(),

@@ -31,7 +31,7 @@ exports.onLoad = api => {
                             const fetchedMsg = messages.first();
 
                             fetchedMsg.edit({embed: {
-                                color: "3447003",
+                                color: 0xFFFFFF,
                                 title: api.client.users.get(order.userID).username,
                                 fields: [{
                                     name: ":ticket: New Ticket",

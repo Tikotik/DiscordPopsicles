@@ -23,7 +23,7 @@ exports.onLoad = api => {
 
         // Sends ticket information to tickets channel.
         api.client.guilds.get("483736796354576394").channels.get("483743363909025806").send({embed: {
-            color: "3447003",
+            color: 0xFFFFFF,
             title: msg.author.username,
             fields: [{
                 name: ":ticket: New Ticket",
@@ -68,7 +68,7 @@ exports.onLoad = api => {
                 }).then(() => {
                     // Sends an embed to the customer.
                     msg.channel.send({embed: {
-                        color: "3447003",
+                        color: 0xFFFFFF,
                         title: "Ticket Created",
                         description: "Your order has been placed!",
                         fields: [{

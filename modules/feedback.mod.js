@@ -12,7 +12,7 @@ exports.onLoad = api => {
 
         // Sends feedback.
         api.client.guilds.get("483736796354576394").channels.get("483743412546175009").send({embed: {
-            color: "3447003",
+            color: 0xFFFFFF,
             title: `New Feedback from ${msg.author.username} (${msg.author.id})`,
             description: feedback[1],
             timestamp: new Date(),

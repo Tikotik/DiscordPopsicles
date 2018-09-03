@@ -15,9 +15,9 @@ let bot = new BotCore(config);
 
 bot.on("ready", () => {
     console.log(colors.green(`Logged in as ${bot.client.user.tag}.`));
-    console.log(colors.green(`In ${bot.client.guilds.size} Guilds.`))
+    console.log(colors.green(`In ${bot.client.guilds.size} Guilds.`));
 
-    // Activityx    
+    // Activities  
     const activities_list = [
         "Making Popsicles", 
         "Eating Popsicles",
