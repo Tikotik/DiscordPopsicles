@@ -17,5 +17,8 @@ exports.onLoad = api => {
             description: feedback[1],
             timestamp: new Date(),
         }});
+
+        // Logs in console.
+        console.log(colors.green(`${msg.author.username} used the feedback command.`));
     });
 };

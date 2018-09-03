@@ -20,8 +20,14 @@ exports.onLoad = api => {
                 description: "$" + tip[1],
                 timestamp: new Date(),
             }});
+
+            // Logs in console.
+            console.log(colors.green(`${msg.author.username} used the tip command.`));
         }else {
             msg.channel.send(`${tip[1]} is not a valid number.`);
+
+            // Logs in console.
+            console.log(colors.green(`${msg.author.username} didn't give a valid number for the the tip command.`));
         }
     });
 };
