@@ -31,6 +31,16 @@ bot.on("ready", () => {
         bot.client.user.setActivity(activities_list[index]);
     }, 10000);
 
+    //Joined Guild
+    bot.client.on("guildCreate", (guild) => {   
+        console.log(colors.green(`Joined New Guild, ${guild.name}`);
+    });
+
+    //Left Guild
+    bot.client.on("guildDelete", (guild) => {
+        console.log(colors.green(`Left Guild, ${guild.name}`);
+    });
+
     // Keep Awake
     app.get("/", (request, response) => {
         console.log(Date.now() + " Ping Received");
