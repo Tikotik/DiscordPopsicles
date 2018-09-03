@@ -6,10 +6,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Additions
-- Commands
-    - Ping
-    - Order
-    - Tip
-    - Feedback
-- Features
-    - Basic Ticket System using Embeds.
+- Ability to Order, Claim, Freeze, and Deliver Orders.
+- Tips and Feedback Commands.
+- Help Command to Get Help.
