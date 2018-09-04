@@ -21,8 +21,8 @@ exports.onLoad = api => {
                         return;
                     }
                     
+                    // Checks status.
                     if(msg.author.id === order.chef) {
-
                         if (order.status === "Claimed") {
                             msg.reply("The next message you send will be set as the order's image.");
     
