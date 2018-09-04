@@ -13,6 +13,13 @@ exports.onLoad = api => {
                     let ticketID = msg.content.substring(10);
                     let order = orderDB[ticketID];
 
+                    // If the order doesn't exist.
+                    if(order === undefined) {
+                        msg.reply("Couldn't find that order. Try again!");
+
+                        return;
+                    }
+                    
                     // Checks status.
                     if (order.status === "Frozen") {
                         // Delete ticket from database.
