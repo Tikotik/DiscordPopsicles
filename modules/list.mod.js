@@ -1,7 +1,7 @@
-exports.id = "list";
-
 const colors = require("colors");
 const fsn = require("fs-nextra");
+
+exports.id = "list";
 
 exports.onLoad = api => {
     api.commands.add("list", (msg) => {

@@ -1,4 +1,5 @@
 const isNumber = require("is-number");
+const colors = require("colors");
 
 exports.id = "tip";
 

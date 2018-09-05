@@ -1,7 +1,7 @@
-exports.id = "order";
-
 const fsn = require("fs-nextra");
 const colors = require("colors");
+
+exports.id = "order";
 
 exports.onLoad = api => {
     api.commands.add("order", (msg) => {

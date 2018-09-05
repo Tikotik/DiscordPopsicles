@@ -1,3 +1,5 @@
+const colors = require("colors");
+
 exports.id = "feedback";
 
 exports.onLoad = api => {

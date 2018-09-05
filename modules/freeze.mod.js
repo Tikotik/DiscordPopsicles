@@ -1,8 +1,8 @@
-exports.id = "freeze";
-
 const Discord = require("discord.js");
 const fsn = require("fs-nextra");
 const colors = require("colors");
+
+exports.id = "freeze";
 
 exports.onLoad = api => {
     api.commands.add("freeze", (msg) => {
@@ -28,7 +28,7 @@ exports.onLoad = api => {
     
                             // Get the image URL.
                             let imageURL = undefined;
-                            const collector = new Discord.MessageCollector(msg.channel, m => m.author.id === msg.author.id, { time: 30000 });
+                                
                             collector.on("collect", message => {
                                 imageURL = message.content;
       

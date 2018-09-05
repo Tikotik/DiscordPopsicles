@@ -1,3 +1,5 @@
+const colors = require("colors");
+
 exports.id = "servers";
 
 exports.onLoad = api => {

@@ -1,7 +1,7 @@
-exports.id = "claim";
-
 const fsn = require("fs-nextra");
 const colors = require("colors");
+
+exports.id = "claim";
 
 exports.onLoad = api => {
     api.commands.add("claim", (msg) => {

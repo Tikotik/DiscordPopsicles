@@ -1,7 +1,7 @@
-exports.id = "delticket";
-
 const fsn = require("fs-nextra");
 const colors = require("colors");
+
+exports.id = "delticket";
 
 exports.onLoad = api => {
     api.commands.add("delticket", (msg) => {
