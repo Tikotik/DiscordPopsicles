@@ -5,6 +5,7 @@ exports.onLoad = api => {
         // Sends a message.
         msg.channel.send("Sent the DMs!");
 
+        // Sends Embed
         msg.author.send({embed: {
             color: 3447003,
             title: "Discord Popsicles Help",
@@ -29,5 +30,8 @@ exports.onLoad = api => {
                 value: "Soon."
             }]
         }});
+
+        // Logs in console.
+        console.log(colors.green(`${msg.author.username} used the help command.`));
     })
 };

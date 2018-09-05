@@ -14,6 +14,7 @@ exports.onLoad = api => {
             }
         });
 
-        console.log(colors.green(`${msg.author.username} used the list command.`));
+        // Logs in console.
+        console.log(colors.green(`${msg.author.username} used the lsit command.`));
     })
 };

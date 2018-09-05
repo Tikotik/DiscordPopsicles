@@ -7,6 +7,7 @@ exports.onLoad = api => {
             "description": `${api.client.ping} ms`
         }});
 
-        console.log(`${msg.author.username} used the ping command.`);
+        // Logs in console.
+        console.log(colors.green(`${msg.author.username} used the ping command.`));
     })
 };
