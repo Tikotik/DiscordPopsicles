@@ -40,14 +40,4 @@ bot.on("ready", () => {
     bot.client.on("guildDelete", (guild) => {
         console.log(colors.green(`Left Guild, ${guild.name}`));
     });
-
-    // Keep Awake
-    app.get("/", (request, response) => {
-        console.log(Date.now() + " Ping Received");
-        response.sendStatus(200);
-    });
-    app.listen(process.env.PORT);
-    setInterval(() => {
-        http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-    }, 280000);
 });
