@@ -6,7 +6,7 @@ exports.onLoad = api => {
     api.commands.add("pong", (msg) => {
         msg.channel.send({embed: {
             "title": ":ping_pong: Ping!",
-            "description": `${api.client.ping} ms`
+            "description": `${Math.round(api.client.ping)} ms`
         }});
 
         // Logs in console.
