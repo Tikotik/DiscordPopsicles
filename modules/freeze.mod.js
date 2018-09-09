@@ -28,7 +28,8 @@ exports.onLoad = api => {
     
                             // Get the image URL.
                             let imageURL = undefined;
-                                
+                            
+                            const collector = new Discord.MessageCollector(msg.channel, m => m.author.id === msg.author.id, { time: 30000 });
                             collector.on("collect", message => {
                                 imageURL = message.content;
       
