@@ -1,9 +1,8 @@
 const BotCore = require("reputation-core");
 const fs = require("fs");
 const colors = require("colors");
-const http = require("http");
-const express = require("express");
-const app = express();
+
+require("dotenv").config();
 
 let config = Object.assign({
 	modulePath: "modules",
