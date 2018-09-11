@@ -4,6 +4,8 @@
 ![status](https://img.shields.io/badge/status-active-brightgreen.svg)
 ![maintained](https://img.shields.io/badge/maintained-yes-brightgreen.svg)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/181d97c6f9be446ca3a3c9ab76b0ad21)](https://www.codacy.com/app/hparcells/DiscordPopsicles?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hparcells/DiscordPopsicles&amp;utm_campaign=Badge_Grade)
+
 A discord bot to deliver popsicles to your server.
 
 ## More Information
