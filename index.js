@@ -2,6 +2,9 @@ const BotCore = require("reputation-core");
 const fs = require("fs");
 const colors = require("colors");
 
+const Sentry = require('@sentry/node');
+Sentry.init({ dsn: 'https://3899f40a2ff74693b64687611fa73510@sentry.io/1284361' });
+
 require("dotenv").config();
 
 let config = Object.assign({
