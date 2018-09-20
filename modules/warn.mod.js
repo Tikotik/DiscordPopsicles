@@ -7,7 +7,6 @@ exports.onLoad = api => {
     api.commands.add("warn", (msg) => {
         let content = msg.content.substring(7);
         let server = content.substring(0, 18);
-        let warning = content.substring(19);
 
         fsn.readJSON("./warnings.json").then((warningDB) => {
             let entry = warningDB[server];
