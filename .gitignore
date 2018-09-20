@@ -1,3 +1,5 @@
 node_modules/
 orders.json
+warnings.json
+blacklist.json
 .env

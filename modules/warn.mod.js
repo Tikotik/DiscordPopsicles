@@ -26,19 +26,23 @@ exports.onLoad = api => {
                 });
             }else {
                 let totalWarnings = entry.warnings + 1;
-
+                
                 // Set JSON information.
                 warningDB[server] = {
                     warnings: totalWarnings
                 }
-
+                
                 // Write JSON information.
                 fsn.writeJSON("./warnings.json", warningDB, {
                     replacer: null,
                     spaces: 4
                 });
+
             }
         });
+
+        // Sends Message.
+        msg.channel.send(`You gave ${api.client.guilds.get(server).name} a warning.`);
         
         // Logs in console.
         console.log(colors.green(`${msg.author.username} used the warn command.`));
