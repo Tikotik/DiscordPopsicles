@@ -16,4 +16,4 @@ Use [https://discordapp.com/oauth2/authorize?client_id=483752759502307330&permis
 
 ## Roadmap
 - Add a details command to see the details of an order.
-- A complete rewrite not using reputation-core?
+- A new rewrite.
