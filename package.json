@@ -2,7 +2,7 @@
   "name": "discordpopsicles",
   "version": "1.0.0",
   "description": "A discord bot to deliver popsicles to your discord server.",
-  "main": "index.js",
+  "main": "discordPopsicles.js",
   "dependencies": {
     "@sentry/node": "^4.0.0",
     "colors": "^1.3.2",
@@ -15,7 +15,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node index.js"
+    "start": "pm2 start discordPopsicles.js"
   },
   "repository": {
     "type": "git",

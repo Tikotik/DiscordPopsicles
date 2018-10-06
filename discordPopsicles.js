@@ -43,3 +43,7 @@ bot.on("ready", () => {
 		console.log(colors.green(`Left Guild, ${guild.name}`));
 	});
 });
+
+process.on("error", () => {
+	console.log("Oops something happened!");
+});
