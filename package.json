@@ -1,6 +1,6 @@
 {
   "name": "discordpopsicles",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "description": "A discord bot to deliver popsicles to your discord server.",
   "main": "discordPopsicles.js",
   "dependencies": {
