@@ -15,7 +15,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "pm2 start discordPopsicles.js"
+    "start": "pm2 start discordPopsicles.js",
+    "stop": "pm2 stop discordPopsicles.js"
   },
   "repository": {
     "type": "git",
