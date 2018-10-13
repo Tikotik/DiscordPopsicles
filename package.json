@@ -24,7 +24,7 @@
     "url": "git+https://github.com/hparcells/DiscordPopsicles.git"
   },
   "author": "Hunter Parcells",
-  "license": "MIT",
+  "license": "GPL-3.0-only",
   "bugs": {
     "url": "https://github.com/hparcells/DiscordPopsicles/issues"
   },
