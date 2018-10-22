@@ -8,6 +8,7 @@
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/hparcells/DiscordPopsicles.svg)](https://github.com/hparcells/DiscordPopsicles)
 [![GitHub](https://img.shields.io/github/license/hparcells/DiscordPopsicles.svg)](https://github.com/hparcells/DiscordPopsicles)
 
+[![dependencies Status](https://david-dm.org/hparcells/DiscordPopsicles/status.svg)](https://david-dm.org/hparcells/DiscordPopsicles)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7cb7aeb6afff420ba6ea92ee8d443312)](https://www.codacy.com/app/hparcells/DiscordPopsicles?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hparcells/DiscordPopsicles&amp;utm_campaign=Badge_Grade)
 
 A discord bot to deliver popsicles to your server.
